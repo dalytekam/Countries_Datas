@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  background-color: #ccc; }
+
+.title {
+  position: fixed;
+  z-index: 3;
+  width: 100vw;
+  top: 0;
+  padding: 1rem;
+  background-color: #990c0c; }
+
+input[type="text"] {
+  height: 3rem;
+  width: 80%;
+  margin: 1rem auto;
+  font-size: 2rem;
+  border-radius: 5px;
+  display: block;
+  border-style: solid; }
+  input[type="text"]:focus {
+    box-shadow: 1px 2px 3px green;
+    border: 1px solid green; }
+
+.title-text {
+  font-size: 4rem;
+  background-color: #131b05;
+  color: whitesmoke;
+  height: 6rem;
+  padding: 1rem;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto; }
+
+.countries {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  margin: 15rem 6rem 2rem 6rem; }
+  .countries .country {
+    border-radius: 5%;
+    height: 300px;
+    width: 300px; }
+
+.bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  border-radius: 5%;
+  opacity: 1;
+  transition: all 0.5s ease-in; }
+
+.country-flag {
+  width: 300px;
+  height: 300px; }
+  .country-flag:hover .bg {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in; }
+
+.country-details {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center; }
+  .country-details:hover a {
+    display: block;
+    transition: all 0.5s ease-in;
+    visibility: visible; }
+  .country-details:hover .country-name,
+  .country-details:hover .country-capital {
+    transition: all 0.5s ease-in; }
+
+.country-capital {
+  color: white;
+  font-size: 1rem;
+  margin: 1rem auto; }
+
+.country-name {
+  color: white;
+  font-size: 2rem;
+  margin: 1rem auto; }
+
+a {
+  margin: 1rem auto;
+  border: 0.3px solid red;
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 1.7rem;
+  border-radius: 5%;
+  transition: all 0.5s ease-in;
+  visibility: hidden; }
+  a:hover {
+    background-color: #e22b13; }
