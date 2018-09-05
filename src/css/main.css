@@ -65,12 +65,20 @@ input[type="text"] {
   display: none; }
   .modal .close {
     position: absolute;
+    margin-top: 0;
     top: 0;
-    right: 0.5rem;
-    color: red;
+    right: 0;
     font-size: 2rem;
     cursor: pointer;
-    font-weight: bolder; }
+    font-weight: bolder;
+    display: inline-block;
+    padding: 0.5rem;
+    padding-top: 0.06rem;
+    padding-bottom: 0.06rem; }
+    .modal .close:hover {
+      background-color: #f00;
+      color: wheat;
+      border: 0.3px solid black; }
 
 .bg {
   background-size: cover;
