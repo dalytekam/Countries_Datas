@@ -13,16 +13,6 @@ fetch(endpointAPI)
       let countryCapital = country.capital;
       let countryFlag = country.flag;
 
-      let area = country.area;
-      let callingCode = country.callingCodes; //array
-      let currency = country.currencies; // array
-      let language = country.languages; // array
-      let latitude = country.latlng[0];
-      let longiitude = country.latlng[1];
-      let population = country.population;
-      let region = country.region;
-      let timeZone = country.timezones; //array
-
       let singleCountry = document.createElement("div");
       singleCountry.classList.add("country");
       singleCountry.innerHTML = `
@@ -45,16 +35,57 @@ fetch(endpointAPI)
       bg[2].childNodes[5].addEventListener("click", showModal);
     });
 
-    console.log(data);
+    //console.log(data);
+
+    function showModal(e) {
+      e.preventDefault();
+      backDrop.style.display = "block";
+      modal.style.display = "block";
+      console.log(e.target.parentElement.firstElementChild.textContent);
+      //display the datas iinside the modal
+      let modalContent = modal.querySelector(".modal-content");
+      data.forEach(country => {
+        let countryName = country.name;
+        let countryCapital = country.capital;
+        let countryFlag = country.flag;
+        let area = country.area;
+        let callingCode = country.callingCodes; //array
+        let currency = country.currencies; // array
+        let language = country.languages; // array
+        let latitude = country.latlng[0];
+        let longitude = country.latlng[1];
+        let population = country.population;
+        let region = country.region;
+        let timeZone = country.timezones; //array
+        if (
+          e.target.parentElement.firstElementChild.textContent == country.name
+        ) {
+          modalContent.innerHTML = `
+<div class="modal-left">
+                        <h2>${countryName}</h2>
+                        <div class="modal-image"> <img src="${countryFlag}" alt="flag"></div>
+
+                    </div>
+                    <div class="modal-right">
+                        <h2>Capital:<span class="capital">${countryCapital}</span></h2>
+                        <h2>Region:<span class="region">${region}</span></h2>
+                        <h2>Population:<span class="population">${population}</span></h2>
+                        <h2>Area:<span class="area">${area}</span></h2>
+                        <h2>Calling Code:<span class="calling-code">${callingCode}</span></h2>
+                        <h2>Currency:<span class="ccurrency">${currency}</span></h2>
+                        <h2>Languages:<span class="language">${language}</span></h2>
+                        <h2>Latitude:<span class="latitude">${latitude}</span></h2>
+                        <h2>Longitude:<span class="longitude">${longitude}</span></h2>
+                        <h2>Time Zone:<span class="time-zone">${timeZone}</span></h2>
+      `;
+        }
+      });
+    }
   })
   .catch(err => console.log(err));
 
 //Show the modal
-function showModal(e) {
-  e.preventDefault();
-  backDrop.style.display = "block";
-  modal.style.display = "block";
-}
+
 close.addEventListener("click", closeModal);
 //Close the modal
 function closeModal() {
