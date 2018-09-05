@@ -13,6 +13,7 @@ fetch(endpointAPI)
       let countryCapital = country.capital;
       let countryFlag = country.flag;
 
+      let area = country.area;
       let callingCode = country.callingCodes; //array
       let currency = country.currencies; // array
       let language = country.languages; // array
@@ -44,7 +45,7 @@ fetch(endpointAPI)
       bg[2].childNodes[5].addEventListener("click", showModal);
     });
 
-    //console.log(countryDetails);
+    console.log(data);
   })
   .catch(err => console.log(err));
 

@@ -77,8 +77,22 @@ input[type="text"] {
     padding-bottom: 0.06rem; }
     .modal .close:hover {
       background-color: #f00;
-      color: wheat;
-      border: 0.3px solid black; }
+      color: wheat; }
+
+.modal-content {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: 2fr 3fr;
+  grid-template-areas: "left right" "left right"; }
+
+.modal-left {
+  grid-area: left; }
+
+.modal-right {
+  grid-area: right; }
+
+.modal-left {
+  background-color: #f00; }
 
 .bg {
   background-size: cover;

@@ -20,6 +20,28 @@
         <div class="backdrop">
             <div class="modal">
                 <span class="close">&times;</span>
+                <div class="modal-content">
+                    <div class="modal-left">
+                        <h2>${country.name}</h2>
+                        <div class="modal-image"> <img src="${country.flag}" alt="flag"></div>
+
+                    </div>
+                    <div class="modal-right">
+                        <h2>Capital:<span class="capital">${country.capital}</span></h2>
+                        <h2>Region:<span class="region">${country.region}</span></h2>
+                        <h2>Population:<span class="population">${country.population}</span></h2>
+                        <h2>Area:<span class="area">${country.area}</span></h2>
+                        <h2>Calling Code:<span class="calling-code">${country.callingCodes}</span></h2>
+                        <h2>Currency:<span class="ccurrency">${country.currencies}</span></h2>
+                        <h2>Languages:<span class="language">${country.languages}</span></h2>
+                        <h2>Latitude:<span class="latitude">${country.latlng[0]}</span></h2>
+                        <h2>Longitude:<span class="longitude">${country.latlng[1]}</span></h2>
+
+
+                        <h2>Time Zone:<span class="time-zone">country.timezones</span></h2>
+
+                    </div>
+                </div>
             </div>
         </div>
         <div class="countries">
