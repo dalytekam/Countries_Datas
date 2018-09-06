@@ -36,13 +36,13 @@ fetch(endpointAPI)
       bg[2].childNodes[5].addEventListener("click", showModal);
     });
 
-    //console.log(data);
+    console.log(data);
 
     function showModal(e) {
       e.preventDefault();
       backDrop.style.display = "block";
       modal.style.display = "block";
-      console.log(e.target.parentElement.firstElementChild.textContent);
+      //console.log(e.target.parentElement.firstElementChild.textContent);
       //display the datas iinside the modal
       let modalContent = modal.querySelector(".modal-content");
       data.forEach(country => {
@@ -68,19 +68,101 @@ fetch(endpointAPI)
 
                     </div>
                     <div class="modal-right">
-                        <h2>Capital:<span class="capital">${countryCapital}</span></h2>
-                        <h2>Region:<span class="region">${region}</span></h2>
-                        <h2>Population:<span class="population">${population}</span></h2>
-                        <h2>Area:<span class="area">${area}</span></h2>
-                        <h2>Latitude:<span class="latitude">${latitude}</span></h2>
-                        <h2>Longitude:<span class="longitude">${longitude}</span></h2>
-                        <h2>Calling Code:<span class="calling-code">${callingCode}</span></h2>
-                        <h2>Currency:<span class="ccurrency">${currency}</span></h2>
-                        <h2>Languages:<span class="language">${language}</span></h2>
-                        <h2>Time Zone:<span class="time-zone">${timeZone}</span></h2>
+                        <h2>Capital: <span class="capital">${countryCapital}</span></h2>
+                        <h2>Region: <span class="region">${region}</span></h2>
+                        <h2>Population: <span class="population">${population}</span></h2>
+                        <h2>Area: <span class="area">${area}</span></h2>
+                        <h2>Latitude: <span class="latitude">${latitude}</span></h2>
+                        <h2>Longitude: <span class="longitude">${longitude}</span></h2>
                         </div>
       `;
+          // get the calling code
+          const br = document.createElement("br");
+          const semicolon = "; ";
+          const plusSign = "+";
+          let space = "  ";
+          const modalRight = document.querySelector(".modal-right");
+          let h2Call = document.createElement("h2");
+          let h2CallText = document.createTextNode("Calling Code: ");
+          h2Call.appendChild(h2CallText);
+          for (let i = 0; i < callingCode.length; i++) {
+            let h2CallChildren = document.createTextNode(callingCode[i]);
+            let callSpan = document.createElement("span");
+            callSpan.className = "calling-code";
+
+            callSpan.append(plusSign);
+            callSpan.appendChild(h2CallChildren);
+            h2Call.appendChild(callSpan);
+          }
+          modalRight.appendChild(h2Call);
+
+          //Get the currency
+          let h2Currency = document.createElement("h2");
+          let h2CurrencyText = document.createTextNode("Currency: ");
+          h2Currency.appendChild(h2CurrencyText);
+          for (let i = 0; i < currency.length; i++) {
+            let h2CurrencyChildrenCode = document.createTextNode(
+              "code: " + currency[i].code
+            );
+            let h2CurrencyChildrenName = document.createTextNode(
+              currency[i].name
+            );
+            let h2CurrencyChildrenSymbol = document.createTextNode(
+              "symbol: " + currency[i].symbol
+            );
+            let currencySpan = document.createElement("span");
+            currencySpan.className = "currency";
+            currencySpan.appendChild(h2CurrencyChildrenName);
+            currencySpan.append(semicolon);
+            currencySpan.appendChild(h2CurrencyChildrenCode);
+            //Check if symbol exist
+            if (h2CurrencyChildrenSymbol != null) {
+              currencySpan.append(semicolon);
+              currencySpan.appendChild(h2CurrencyChildrenSymbol);
+            }
+            if (currency.length > 1) {
+              h2Currency.appendChild(br);
+              //! need to indent the second line in case of many currencies
+            }
+            h2Currency.appendChild(currencySpan);
+          }
+          modalRight.appendChild(h2Currency);
+          //Get the languages
+          let h2Language = document.createElement("h2");
+          let h2LanguageText = document.createTextNode("Languages: ");
+          h2Language.appendChild(h2LanguageText);
+          for (let i = 0; i < language.length; i++) {
+            let h2LanguageChildren = document.createTextNode(language[i].name);
+            let languageSpan = document.createElement("span");
+            languageSpan.className = "language";
+            //! Need to render the list properly which means comma in between and period at the end
+            //if (h2LanguageChildren == language[language.length - 1].name) {
+            languageSpan.appendChild(h2LanguageChildren);
+            languageSpan.append(",");
+
+            h2Language.appendChild(languageSpan);
+          }
+          modalRight.appendChild(h2Language);
+
+          // TODO Get the time zone
+          let h2Call = document.createElement("h2");
+          let h2CallText = document.createTextNode("Calling Code: ");
+          h2Call.appendChild(h2CallText);
+          for (let i = 0; i < callingCode.length; i++) {
+            let h2CallChildren = document.createTextNode(callingCode[i]);
+            let callSpan = document.createElement("span");
+            callSpan.className = "calling-code";
+
+            callSpan.append(plusSign);
+            callSpan.appendChild(h2CallChildren);
+            h2Call.appendChild(callSpan);
+          }
+          modalRight.appendChild(h2Call);
         }
+        //  <h2>Calling Code:<span class="calling-code">${callingCode}</span></h2>
+        //                 <h2>Currency:<span class="ccurrency">${currency}</span></h2>
+        //                 <h2>Languages:<span class="language">${language}</span></h2>
+        //                 <h2>Time Zone:<span class="time-zone">${timeZone}</span></h2>
       });
     }
   })
@@ -110,8 +192,8 @@ function filterCountry() {
     //Check if the user input match partially or totally with the different countries' names
     if (
       countryDetail.firstElementChild.textContent
-      .toUpperCase()
-      .indexOf(countrySearchText.trim()) != -1
+        .toUpperCase()
+        .indexOf(countrySearchText.trim()) != -1
     ) {
       // get the div with the "country" class and display it if match
       countryDetail.parentElement.parentElement.parentElement.style.display =
