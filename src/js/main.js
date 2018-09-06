@@ -5,6 +5,7 @@ let backDrop = document.querySelector(".backdrop");
 let countries = document.querySelector(".countries");
 let endpointAPI = "https://restcountries.eu/rest/v2/all";
 let error = "something went wrong !";
+let km = "Km" + "2".sup();
 fetch(endpointAPI)
   .then(res => res.json())
   .then(data => {
@@ -48,13 +49,13 @@ fetch(endpointAPI)
         let countryName = country.name;
         let countryCapital = country.capital;
         let countryFlag = country.flag;
-        let area = country.area;
+        let area = parseInt(country.area).toLocaleString() + " " + km;
         let callingCode = country.callingCodes; //array
         let currency = country.currencies; // array
         let language = country.languages; // array
         let latitude = country.latlng[0];
         let longitude = country.latlng[1];
-        let population = country.population;
+        let population = parseInt(country.population).toLocaleString();
         let region = country.region;
         let timeZone = country.timezones; //array
         if (
@@ -71,12 +72,13 @@ fetch(endpointAPI)
                         <h2>Region:<span class="region">${region}</span></h2>
                         <h2>Population:<span class="population">${population}</span></h2>
                         <h2>Area:<span class="area">${area}</span></h2>
+                        <h2>Latitude:<span class="latitude">${latitude}</span></h2>
+                        <h2>Longitude:<span class="longitude">${longitude}</span></h2>
                         <h2>Calling Code:<span class="calling-code">${callingCode}</span></h2>
                         <h2>Currency:<span class="ccurrency">${currency}</span></h2>
                         <h2>Languages:<span class="language">${language}</span></h2>
-                        <h2>Latitude:<span class="latitude">${latitude}</span></h2>
-                        <h2>Longitude:<span class="longitude">${longitude}</span></h2>
                         <h2>Time Zone:<span class="time-zone">${timeZone}</span></h2>
+                        </div>
       `;
         }
       });
@@ -108,8 +110,8 @@ function filterCountry() {
     //Check if the user input match partially or totally with the different countries' names
     if (
       countryDetail.firstElementChild.textContent
-        .toUpperCase()
-        .indexOf(countrySearchText.trim()) != -1
+      .toUpperCase()
+      .indexOf(countrySearchText.trim()) != -1
     ) {
       // get the div with the "country" class and display it if match
       countryDetail.parentElement.parentElement.parentElement.style.display =
