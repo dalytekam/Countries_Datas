@@ -145,19 +145,19 @@ fetch(endpointAPI)
           modalRight.appendChild(h2Language);
 
           // TODO Get the time zone
-          let h2Call = document.createElement("h2");
-          let h2CallText = document.createTextNode("Calling Code: ");
-          h2Call.appendChild(h2CallText);
-          for (let i = 0; i < callingCode.length; i++) {
-            let h2CallChildren = document.createTextNode(callingCode[i]);
-            let callSpan = document.createElement("span");
-            callSpan.className = "calling-code";
+          // let h2Call = document.createElement("h2");
+          // let h2CallText = document.createTextNode("Calling Code: ");
+          // h2Call.appendChild(h2CallText);
+          // for (let i = 0; i < callingCode.length; i++) {
+          //   let h2CallChildren = document.createTextNode(callingCode[i]);
+          //   let callSpan = document.createElement("span");
+          //   callSpan.className = "calling-code";
 
-            callSpan.append(plusSign);
-            callSpan.appendChild(h2CallChildren);
-            h2Call.appendChild(callSpan);
-          }
-          modalRight.appendChild(h2Call);
+          //   callSpan.append(plusSign);
+          //   callSpan.appendChild(h2CallChildren);
+          //   h2Call.appendChild(callSpan);
+          // }
+          // modalRight.appendChild(h2Call);
         }
         //  <h2>Calling Code:<span class="calling-code">${callingCode}</span></h2>
         //                 <h2>Currency:<span class="ccurrency">${currency}</span></h2>
