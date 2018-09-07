@@ -58,12 +58,15 @@ fetch(endpointAPI)
         let population = parseInt(country.population).toLocaleString();
         let region = country.region;
         let timeZone = country.timezones; //array
+        let topDomain = country.topLevelDomain[0]; //Array
+        let alphaCode = country.alpha3Code;
+
         if (
           e.target.parentElement.firstElementChild.textContent == country.name
         ) {
           modalContent.innerHTML = `
 <div class="modal-left">
-                        <h2>${countryName}</h2>
+                        <div><h2>${countryName}</h2></div>
                         <div class="modal-image"> <img src="${countryFlag}" alt="flag"></div>
 
                     </div>
@@ -74,13 +77,15 @@ fetch(endpointAPI)
                         <h2>Area: <span class="area">${area}</span></h2>
                         <h2>Latitude: <span class="latitude">${latitude}</span></h2>
                         <h2>Longitude: <span class="longitude">${longitude}</span></h2>
+                        <h2>Top Level Domain: <span class="top-domain">${topDomain}</span></h2>
+                        <h2>Alpha3 Code: <span class="alpha-3">${alphaCode}</span></h2>
                         </div>
       `;
           // get the calling code
           const br = document.createElement("br");
           const semicolon = "; ";
           const plusSign = "+";
-          let space = "  ";
+          let comma = ", ";
           const modalRight = document.querySelector(".modal-right");
           let h2Call = document.createElement("h2");
           let h2CallText = document.createTextNode("Calling Code: ");
@@ -90,8 +95,14 @@ fetch(endpointAPI)
             let callSpan = document.createElement("span");
             callSpan.className = "calling-code";
 
-            callSpan.append(plusSign);
-            callSpan.appendChild(h2CallChildren);
+            if (callingCode.indexOf(callingCode[i]) == callingCode.length - 1) {
+              callSpan.append(plusSign);
+              callSpan.appendChild(h2CallChildren);
+            } else {
+              callSpan.append(plusSign);
+              callSpan.appendChild(h2CallChildren);
+              callSpan.append(comma);
+            }
             h2Call.appendChild(callSpan);
           }
           modalRight.appendChild(h2Call);
@@ -129,35 +140,43 @@ fetch(endpointAPI)
           modalRight.appendChild(h2Currency);
           //Get the languages
           let h2Language = document.createElement("h2");
-          let h2LanguageText = document.createTextNode("Languages: ");
+          let h2LanguageText = document.createTextNode("Language: ");
           h2Language.appendChild(h2LanguageText);
           for (let i = 0; i < language.length; i++) {
             let h2LanguageChildren = document.createTextNode(language[i].name);
             let languageSpan = document.createElement("span");
             languageSpan.className = "language";
-            //! Need to render the list properly which means comma in between and period at the end
-            //if (h2LanguageChildren == language[language.length - 1].name) {
-            languageSpan.appendChild(h2LanguageChildren);
-            languageSpan.append(",");
+            // Check if there is one or more than one language and render them accordingly with comma and period
+            if (language.indexOf(language[i]) == language.length - 1) {
+              languageSpan.appendChild(h2LanguageChildren);
+            } else {
+              languageSpan.appendChild(h2LanguageChildren);
+              languageSpan.append(comma);
+            }
 
             h2Language.appendChild(languageSpan);
           }
           modalRight.appendChild(h2Language);
 
-          // TODO Get the time zone
-          // let h2Call = document.createElement("h2");
-          // let h2CallText = document.createTextNode("Calling Code: ");
-          // h2Call.appendChild(h2CallText);
-          // for (let i = 0; i < callingCode.length; i++) {
-          //   let h2CallChildren = document.createTextNode(callingCode[i]);
-          //   let callSpan = document.createElement("span");
-          //   callSpan.className = "calling-code";
+          //  Get the time zone
+          let h2Time = document.createElement("h2");
+          let h2TimeText = document.createTextNode("Timezone: ");
+          h2Time.appendChild(h2TimeText);
+          for (let i = 0; i < timeZone.length; i++) {
+            let h2TimeChildren = document.createTextNode(timeZone[i]);
+            let timeSpan = document.createElement("span");
+            timeSpan.className = "time-zone";
+            // Check if there is one or more than one timezone and render them accordingly with comma and period
+            if (timeZone.indexOf(timeZone[i]) == timeZone.length - 1) {
+              timeSpan.appendChild(h2TimeChildren);
+            } else {
+              timeSpan.appendChild(h2TimeChildren);
+              timeSpan.append(comma);
+            }
 
-          //   callSpan.append(plusSign);
-          //   callSpan.appendChild(h2CallChildren);
-          //   h2Call.appendChild(callSpan);
-          // }
-          // modalRight.appendChild(h2Call);
+            h2Time.appendChild(timeSpan);
+          }
+          modalRight.appendChild(h2Time);
         }
         //  <h2>Calling Code:<span class="calling-code">${callingCode}</span></h2>
         //                 <h2>Currency:<span class="ccurrency">${currency}</span></h2>

@@ -1,4 +1,5 @@
 @import "responsiveness";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
 
 * {
   margin: 0;
@@ -7,6 +8,7 @@
 }
 
 html {
+  font-family: 'Roboto', sans-serif;
   // background-color: #ccc;
 }
 
@@ -89,12 +91,12 @@ input[type="text"] {
   // left: 8vw;
   // right: 8vw;
   padding: 1rem;
-  overflow: auto;
+  overflow: hidden;
   margin: 3% auto;
   width: 85%;
   height: 80%;
   background-color: rgb(238, 234, 234);
-  box-shadow: 1px 2px 3px #4e0404;
+  box-shadow: 2px 2px 3px #4e0404;
   z-index: 7;
   display: none;
 
@@ -121,8 +123,8 @@ input[type="text"] {
 .modal-content {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 3fr;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: minmax(500px, 1fr);
   grid-template-areas:
     "left right"
     "left right";
@@ -140,15 +142,34 @@ input[type="text"] {
 }
 
 .modal-left {
+  display: grid;
   grid-area: left;
+  justify-content: center;
+  align-items: center;
+  // height: 550px;
+  border-right: 0.3rem solid orangered;
+  padding: 1rem;
+
+  h2 {
+    font-weight: bolder;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: rgb(68, 8, 235);
+  }
 }
 
 .modal-right {
+  display: grid;
+  grid-area: left;
+  justify-content: center;
+  align-items: center;
+  //height: 550px;
   grid-area: right;
-}
 
-.modal-left {
-  border: 1px solid moccasin;
+  h2:nth-child(2) {
+    color: red;
+  }
 }
 
 .bg {

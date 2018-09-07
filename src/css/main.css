@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
+
+html {
+  font-family: 'Roboto', sans-serif; }
 
 .title {
   position: fixed;
@@ -56,12 +60,12 @@ input[type="text"] {
 .modal {
   position: relative;
   padding: 1rem;
-  overflow: auto;
+  overflow: hidden;
   margin: 3% auto;
   width: 85%;
   height: 80%;
   background-color: #eeeaea;
-  box-shadow: 1px 2px 3px #4e0404;
+  box-shadow: 2px 2px 3px #4e0404;
   z-index: 7;
   display: none; }
   .modal .close {
@@ -83,8 +87,8 @@ input[type="text"] {
 .modal-content {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 3fr;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: minmax(500px, 1fr);
   grid-template-areas: "left right" "left right"; }
 
 .modal-image {
@@ -96,13 +100,27 @@ input[type="text"] {
     height: 100%; }
 
 .modal-left {
-  grid-area: left; }
+  display: grid;
+  grid-area: left;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.3rem solid orangered;
+  padding: 1rem; }
+  .modal-left h2 {
+    font-weight: bolder;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #4408eb; }
 
 .modal-right {
+  display: grid;
+  grid-area: left;
+  justify-content: center;
+  align-items: center;
   grid-area: right; }
-
-.modal-left {
-  border: 1px solid moccasin; }
+  .modal-right h2:nth-child(2) {
+    color: red; }
 
 .bg {
   background-size: cover;
