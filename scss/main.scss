@@ -1,5 +1,5 @@
 @import "responsiveness";
-@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+@import url("https://fonts.googleapis.com/css?family=Roboto:100");
 
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   // background-color: #ccc;
 }
 
@@ -23,15 +23,14 @@ html {
   background-color: rgb(153, 12, 12);
 }
 
-main {
-  //   margin: 1rem auto;
-  //   display: grid;
-  //   grid-template-columns: 1fr;
-  //   grid-gap: 1rem;
-  //   padding: 1rem;
-  // border: 2px solid red;
-}
-
+// main {
+//     margin: 1rem auto;
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-gap: 1rem;
+//     padding: 1rem;
+//   border: 2px solid red;
+// }
 input[type="text"] {
   height: 3rem;
   width: 80%;
@@ -95,7 +94,7 @@ input[type="text"] {
   margin: 3% auto;
   width: 85%;
   height: 80%;
-  background-color: rgb(238, 234, 234);
+  background-color: white;
   box-shadow: 2px 2px 3px #4e0404;
   z-index: 7;
   display: none;
@@ -166,10 +165,6 @@ input[type="text"] {
   align-items: center;
   //height: 550px;
   grid-area: right;
-
-  h2:nth-child(2) {
-    color: red;
-  }
 }
 
 .bg {
@@ -244,3 +239,5 @@ a.view {
     background-color: rgb(226, 43, 19);
   }
 }
+
+// todo Make the responsiveness and clean the javascript code(move the function to another file and import them)

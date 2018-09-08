@@ -177,11 +177,25 @@ fetch(endpointAPI)
             h2Time.appendChild(timeSpan);
           }
           modalRight.appendChild(h2Time);
+          // Add the pallet color to the h2 in modal right
+          let h2InModalRigth = modalRight.querySelectorAll("h2");
+          console.log('h2InModalRigth', h2InModalRigth[2]);
+
+          const randomColors = [
+            ["#ae030e", "#042818", "#99024b", "#f29603", "#1a458a", "#ae030e", "#042818", "#99024b", "#f29603", "#1a458a", "#ae030e", "#042818"],
+            ["#d7c797", "#845422", "#ead61c", "#a47c48", "#000000", "#d7c797", "#845422", "#ead61c", "#a47c48", "#000000", "#d7c797", "#845422"],
+            ["#d69313", "#870a0a", "#f0e3ac", "#a95b0b", "#375a25", "#d69313", "#870a0a", "#f0e3ac", "#a95b0b", "#375a25", "#d69313", "#870a0a"],
+            ["#005900", "#b20000", "#eaa612", "#e06014", "	#000000", "#005900", "#b20000", "#eaa612", "#e06014", "	#000000", "#005900", "#b20000"]
+          ];
+          let randomPalette = randomColors[Math.floor(Math.random() * randomColors.length)];
+
+          for (let i = 0; i < h2InModalRigth.length; i++) {
+
+            h2InModalRigth[i].style.color = randomPalette[i];
+
+          }
         }
-        //  <h2>Calling Code:<span class="calling-code">${callingCode}</span></h2>
-        //                 <h2>Currency:<span class="ccurrency">${currency}</span></h2>
-        //                 <h2>Languages:<span class="language">${language}</span></h2>
-        //                 <h2>Time Zone:<span class="time-zone">${timeZone}</span></h2>
+
       });
     }
   })
@@ -211,8 +225,8 @@ function filterCountry() {
     //Check if the user input match partially or totally with the different countries' names
     if (
       countryDetail.firstElementChild.textContent
-        .toUpperCase()
-        .indexOf(countrySearchText.trim()) != -1
+      .toUpperCase()
+      .indexOf(countrySearchText.trim()) != -1
     ) {
       // get the div with the "country" class and display it if match
       countryDetail.parentElement.parentElement.parentElement.style.display =

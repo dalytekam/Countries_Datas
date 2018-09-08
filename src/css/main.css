@@ -5,7 +5,7 @@
   box-sizing: border-box; }
 
 html {
-  font-family: 'Roboto', sans-serif; }
+  font-family: "Roboto", sans-serif; }
 
 .title {
   position: fixed;
@@ -64,7 +64,7 @@ input[type="text"] {
   margin: 3% auto;
   width: 85%;
   height: 80%;
-  background-color: #eeeaea;
+  background-color: white;
   box-shadow: 2px 2px 3px #4e0404;
   z-index: 7;
   display: none; }
@@ -119,8 +119,6 @@ input[type="text"] {
   justify-content: center;
   align-items: center;
   grid-area: right; }
-  .modal-right h2:nth-child(2) {
-    color: red; }
 
 .bg {
   background-size: cover;
