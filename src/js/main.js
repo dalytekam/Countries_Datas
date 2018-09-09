@@ -36,7 +36,7 @@ fetch(endpointAPI)
       bg[2].childNodes[5].addEventListener("click", showModal);
     });
 
-    console.log(data);
+    //console.log(data);
 
     function showModal(e) {
       e.preventDefault();
