@@ -185,7 +185,7 @@ fetch(endpointAPI)
           modalRight.appendChild(h2Time);
           // Add the pallet color to the h2 in modal right
           let h2InModalRigth = modalRight.querySelectorAll("h2");
-          console.log('h2InModalRigth', h2InModalRigth[2]);
+
 
           const randomColors = [
             ["#ae030e", "#042818", "#99024b", "#f29603", "#1a458a", "#ae030e", "#042818", "#99024b", "#f29603", "#1a458a", "#ae030e", "#042818"],
