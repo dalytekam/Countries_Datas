@@ -12,25 +12,24 @@ html {
   // background-color: #ccc;
 }
 
-//border: 2px solid green;
+body {
+  margin: 0;
+}
+
 .title {
   position: fixed;
   z-index: 3;
   width: 100vw;
   top: 0;
   padding: 1rem;
-  // border: 2px solid green;
   background-color: rgb(153, 12, 12);
+
+  @include mobile {
+    padding: 0.5rem;
+    top: 0;
+  }
 }
 
-// main {
-//     margin: 1rem auto;
-//     display: grid;
-//     grid-template-columns: 1fr;
-//     grid-gap: 1rem;
-//     padding: 1rem;
-//   border: 2px solid red;
-// }
 input[type="text"] {
   height: 3rem;
   width: 80%;
@@ -39,6 +38,12 @@ input[type="text"] {
   border-radius: 5px;
   display: block;
   border-style: solid;
+
+  @include mobile {
+    margin: 0.5rem auto;
+    font-size: 1rem;
+    height: 2rem;
+  }
 
   &:focus {
     box-shadow: 1px 2px 3px green;
@@ -55,20 +60,39 @@ input[type="text"] {
   text-align: center;
   width: 80%;
   margin: 0 auto;
+
+  @include mobile {
+    font-size: 1.5rem;
+    height: 3rem;
+    padding: 0.5rem;
+  }
 }
 
 .countries {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 2rem;
-  margin: 15rem 6rem 2rem 6rem;
+  justify-items: center;
+  margin: 15rem 2rem 2rem 2rem;
 
-  //padding: 1rem;
+  @include mobile {
+    grid-template-columns: 1fr 1fr;
+    margin: 9.2rem 2rem 2rem 2rem;
+  }
+
+  @include mobileSmall {
+    grid-template-columns: 1fr;
+    margin: 9.2rem 1rem 2rem 1rem;
+  }
+
   .country {
     border-radius: 5%;
-    // border: 1px solid blue;
-    height: 300px;
-    width: 300px;
+    // height: 300px;
+    // width: 300px;
+    // @include mobile {
+    //   height: 280px;
+    //   width: 280px;
+    // }
   }
 }
 
@@ -85,10 +109,6 @@ input[type="text"] {
 
 .modal {
   position: relative;
-  // top: 8vh;
-  // bottom: 8vh;
-  // left: 8vw;
-  // right: 8vw;
   padding: 1rem;
   overflow: hidden;
   margin: 3% auto;
@@ -98,6 +118,13 @@ input[type="text"] {
   box-shadow: 2px 2px 3px #4e0404;
   z-index: 7;
   display: none;
+
+  @include mobile {
+    width: 85vw;
+    height: 85vh;
+    padding: 0.3rem;
+    overflow: auto;
+  }
 
   .close {
     position: absolute;
@@ -111,6 +138,13 @@ input[type="text"] {
     padding: 0.5rem;
     padding-top: 0.06rem;
     padding-bottom: 0.06rem;
+
+    @include mobile {
+      background-color: #f00;
+      color: wheat;
+      font-size: 0.7rem;
+      padding-bottom: 0.2rem;
+    }
 
     &:hover {
       background-color: #f00;
@@ -127,12 +161,26 @@ input[type="text"] {
   grid-template-areas:
     "left right"
     "left right";
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr;
+    grid-gap: 0.5rem;
+    grid-template-areas:
+      "left"
+      "right";
+  }
 }
 
 .modal-image {
   width: 475px;
   height: 320px;
   box-shadow: 0px 0px 3px 4px rgb(58, 55, 55);
+
+  @include mobile {
+    width: 200px;
+    height: 135px;
+  }
 
   img {
     width: 100%;
@@ -145,9 +193,14 @@ input[type="text"] {
   grid-area: left;
   justify-content: center;
   align-items: center;
-  // height: 550px;
   border-right: 0.3rem solid orangered;
   padding: 1rem;
+
+  @include mobile {
+    border-bottom: 0.1rem solid orangered;
+    border-right: none;
+    padding: 0.5rem;
+  }
 
   h2 {
     font-weight: bolder;
@@ -155,16 +208,26 @@ input[type="text"] {
     margin-bottom: 2rem;
     text-align: center;
     color: rgb(68, 8, 235);
+
+    @include mobile {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
   }
 }
 
 .modal-right {
   display: grid;
-  grid-area: left;
   justify-content: center;
   align-items: center;
-  //height: 550px;
   grid-area: right;
+
+  @include mobile {
+    h2 {
+      font-size: 0.9rem;
+      margin: 0.1rem;
+    }
+  }
 }
 
 .bg {
@@ -172,7 +235,6 @@ input[type="text"] {
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
-  // border: 1px red solid;
   border-radius: 5%;
   opacity: 1;
   transition: all 0.5s ease-in;
@@ -181,6 +243,11 @@ input[type="text"] {
 .country-flag {
   width: 300px;
   height: 300px;
+
+  @include mobile {
+    width: 280px;
+    height: 280px;
+  }
 
   &:hover {
     .bg {
@@ -193,10 +260,10 @@ input[type="text"] {
 .country-details {
   width: 100%;
   height: 100%;
-  //border: 1px dotted darkorange;
   display: grid;
   justify-content: center;
   align-content: center;
+  text-align: center;
 
   &:hover {
     a {
@@ -216,12 +283,22 @@ input[type="text"] {
   color: white;
   font-size: 1rem;
   margin: 1rem auto;
+
+  @include mobile {
+    font-size: 0.5rem;
+    margin: 0.5rem auto;
+  }
 }
 
 .country-name {
   color: white;
   font-size: 2rem;
   margin: 1rem auto;
+
+  @include mobile {
+    font-size: 1rem;
+    margin: 0.5rem auto;
+  }
 }
 
 a.view {
@@ -234,6 +311,12 @@ a.view {
   border-radius: 5%;
   transition: all 0.5s ease-in;
   visibility: hidden;
+
+  @include mobile {
+    font-size: 1rem;
+    visibility: visible;
+    background-color: rgb(226, 43, 19);
+  }
 
   &:hover {
     background-color: rgb(226, 43, 19);

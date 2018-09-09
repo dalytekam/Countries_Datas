@@ -124,13 +124,19 @@ fetch(endpointAPI)
             let currencySpan = document.createElement("span");
             currencySpan.className = "currency";
             currencySpan.appendChild(h2CurrencyChildrenName);
-            currencySpan.append(semicolon);
+            currencySpan.append(comma);
             currencySpan.appendChild(h2CurrencyChildrenCode);
+
             //Check if symbol exist
-            if (h2CurrencyChildrenSymbol != null) {
+            if (h2CurrencyChildrenSymbol == "null") {
               currencySpan.append(semicolon);
+            } else {
+              currencySpan.append(comma);
               currencySpan.appendChild(h2CurrencyChildrenSymbol);
+              currencySpan.append(semicolon);
             }
+
+
             if (currency.length > 1) {
               h2Currency.appendChild(br);
               //! need to indent the second line in case of many currencies
