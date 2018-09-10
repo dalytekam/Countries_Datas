@@ -5,12 +5,14 @@
   "main": "index.js",
   "homepage": "https://dalytekam.github.io/Countries_Datas",
   "scripts": {
-    "sass": "node-sass -w scss/ -o src/css/"
+    "sass": "node-sass -w scss/ -o src/css/",
+    "deploy": "gh-pages -d src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gh-pages": "^1.2.0",
     "node-sass": "^4.9.3"
   }
 }
