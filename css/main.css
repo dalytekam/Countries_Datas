@@ -84,7 +84,7 @@ input[type="text"] {
 .modal {
   position: relative;
   padding: 1rem;
-  overflow: hidden;
+  overflow: auto;
   margin: 3% auto;
   width: 85%;
   height: 80%;
@@ -125,13 +125,15 @@ input[type="text"] {
   grid-gap: 1rem;
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: repeat(2, 1fr);
-  grid-template-areas: "left right" "left right"; }
+  grid-template-areas: "left right"
+ "left right"; }
   @media screen and (max-width: 752px) {
     .modal-content {
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1.5fr;
       grid-gap: 0.5rem;
-      grid-template-areas: "left" "right"; } }
+      grid-template-areas: "left"
+ "right"; } }
 
 .modal-image {
   width: 475px;
