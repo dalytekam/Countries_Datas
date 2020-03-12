@@ -7,7 +7,7 @@ Want to know everything about a particular Country, this App is the right soluti
                
 Technologies used:
 
-**HTML5, CSS3, Javascript, API. 
+**HTML5, CSS3, Javascript, API.**
 
 # My Others Projects
 - [Blog Post Web application](https://blog-post-project.herokuapp.com/)
